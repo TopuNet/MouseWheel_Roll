@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>MouseWheel_Roll</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <!--[if lte IE 9]><script type="text/javascript" src="/inc/html5shiv.min.js"></script><![endif]-->
+    <link href="/css/style.css" rel="stylesheet" />
+</head>
+
+<body class="index">
+    <section class="box">
+        <ul class="banner">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div class="arrowUp">⬆️</div>
+        <div class="arrowDown">⬇️</div>
+    </section>
+    <script src="/widget/lib/jquery.min.js"></script>
+    <script src="/widget/lib/MouseWheel_Roll.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        var $roll = new MouseWheel_Roll();
+        $roll.init({
+            box: $(".box"),
+            scrollWrapper: $(".banner"),
+            scrollWrapper_child: $(".banner li"),
+            arrowUp: $(".arrowUp"),
+            arrowDown: $(".arrowDown"),
+            duration: 800
+        });
+
+        $("li").on("click", function() {
+            if ($roll.Paused) {
+
+                $roll.reStart.apply($roll);
+                $("li").css("background", "#fff");
+
+            } else {
+
+                $roll.Pause.apply($roll);
+                $("li").css("background", "#f5f5f5");
+            }
+        });
+    });
+    </script>
+    <!-- <script type="text/javascript" id="script_page" src="/inc/require.js" data-main="/widget/main.js" page="index"></script> -->
+</body>
+
+</html>
