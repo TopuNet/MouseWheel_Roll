@@ -1,5 +1,5 @@
 /*
-    v1.1.1
+    v1.1.2
 
     that = {
         opt : {
@@ -9,6 +9,7 @@
             arrowUp: 上箭头对象。无默认值
             arrowDown: 下箭头对象。无默认值
             duration: 滚屏速度(ms)，默认500
+            callback: 成功回调
         },
         timeStamp_last_scroll, // 记录最后一次滚动时的e.timeStamp
         timeStamp_last_apply, // 记录最后一次请求的e.timeStamp
@@ -137,7 +138,7 @@ function MouseWheel_Roll() {
                             that.set_arrow_display.apply(that, ["up", "none"]);
 
                         // 显示下箭头
-                        that.set_arrow_display.apply(that, ["down", "blcok"]);
+                        that.set_arrow_display.apply(that, ["down", "block"]);
                     }
                 };
 
@@ -171,7 +172,7 @@ function MouseWheel_Roll() {
                             that.set_arrow_display.apply(that, ["down", "none"]);
 
                         // 显示上箭头
-                        that.set_arrow_display.apply(that, ["up", "blcok"]);
+                        that.set_arrow_display.apply(that, ["up", "block"]);
                     }
                 };
 
@@ -192,6 +193,9 @@ function MouseWheel_Roll() {
 
                 if (_callback)
                     _callback();
+
+                if (that.opt.callback)
+                    that.opt.callback();
             };
 
             // 有transition style测试

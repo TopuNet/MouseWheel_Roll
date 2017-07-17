@@ -1,4 +1,4 @@
-# MouseWheel_Roll 插件 v1.1.1
+# MouseWheel_Roll 插件 v1.1.2
 ### 监听鼠标滚轮，滑动屏幕
 ### 安装：npm install topunet-mousewheel_roll
 
@@ -30,24 +30,25 @@ requireJS引用
             scrollWrapper_child: $(".banner li"), // 子元素对象集，如$(li)。无默认值
             arrowUp: $(".arrowUp"), // 上箭头对象。无默认值
             arrowDown: $(".arrowDown"), // 箭头对象。无默认值
-            duration: 800 // 滚屏速度(ms)，默认500
+            duration: 800, // 滚屏速度(ms)，默认500
+            callback: 成功回调
         });
 
-2. 暂停监听：
+1. 暂停监听：
 		
 		$roll.Pause.apply($roll);
 
-3. 重启监听：
+1. 重启监听：
 
 		$roll.reStart.apply($roll);
 
-4. 执行滚动到某高度：
+1. 执行滚动到某高度：
 
 		$roll.Roll.apply(that, [top_px, callback]);
 		@top_px: 滚动至高度_px
-		@callback: 滚动结束回调
+		@callback: 滚动结束回调（除此回调外，依旧会在滚动成功后，执行opt.callback）
 
-5. 全局变量：
+1. 全局变量：
 
 		$roll.Paused: true-暂停中; false-监听中
 		$roll.scrolling: true-正在执行滚屏动画
@@ -56,6 +57,10 @@ requireJS引用
 
 更新历史：
 -------------
+v1.1.2 (2017-07-17)
+
+		增加成功回调 callback。详见启动监听的参数示例。
+
 v1.1.1 (2017-07-12)
 
 		完成并发布至 github & npm
